@@ -1,7 +1,7 @@
 {
-  "name": "@cadienvan/npm-package-ts-scaffholding",
+  "name": "@jointly/performance-logger",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,7 +25,7 @@
     "dev": "jest --watch",
     "test": "jest --no-cache"
   },
-  "prepublish": "npm run build",
+  "prepare": "npm run build",
   "devDependencies": {
     "@types/jest": "^29.2.0",
     "@types/node": "^18.11.7",
@@ -44,13 +44,14 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",
-      "npx eslint --fix"
+      "npx eslint --fix",
+      "npm test"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Cadienvan/npm-package-ts-scaffholding.git"
+    "url": "git://github.com/JointlyTech/performance-logger.git"
   },
   "license": "MIT",
-  "author": "Michael Di Prisco <cadienvan@gmail.com>"
+  "author": "Jointly <dev@jointly.pro>"
 }

@@ -1,49 +1,25 @@
-# What is this?
+# What is it?
 
-A simple scaffholding tool for creating a new project to be published to npm.  
-It provides a build command that will compile your code to a CommonJS Node 14.16 target, allowing named imports for CommonJS packages inside ESM files.  
-The package contains a simple "hello world" based on TypeScript, built on esbuild, tested through Jest and linted with ESLint and Prettier.  
-It also provides a Husky pre-commit hook to run the linter and tests before committing.
+This is a decorator that can be used to measure the performance of a function.  
+It can be used both with `sync` and `async` functions.
 
-## What does it mean?
+# How does it work?
 
-If you try to run `npm run build` you will be able to import the `sayHello` function from the `index.js` file, both via `require` and `import` syntax.
+The decorator will measure the time it takes for a function to execute and log it to the console / the given logger.  
+It expects an object with the following properties:
 
-### Importing via `require`
+- `name`: The name of the function to be measured
+- `log`: The function to call with the measuration results
+- `validation`: A function or a boolean that will be called / verified before the function to be measured is called. If it returns `false`, the function will be called but the measuration will not be logged.
+  - If it is a function, it will be called with the arguments passed to the function to be measured.
+  - If it is a boolean, it will be used as the validation result.
 
-```js
-const { sayHello } = require('my-package');
-```
+# Other Info
 
-### Importing via `import`
-
-```js
-import { sayHello } from 'my-package';
-```
-
-# Why?
-
-I got tired of copying and pasting the same files over and over again.  
-This is a simple tool to create a new project with the basic files needed to publish to npm.
-
-# How can I personalize it?
-
-You can change the `package.json` file to your liking, bringing your own package name and description.  
-Please, remember to give me a star if you like the project!
-
-## How To Install?
-
-```bash
-git clone git://github.com/Cadienvan/npm-package-ts-scaffholding.git package_name
-cd package_name
-npm install
-```
-
-## What's Inside?
-
-- Typescript
-- Jest
-- Eslint
-- Prettier
-- Husky
-- Esbuild
+# ToDo
+- [ ] Refactor + check vari
+- [ ] A differenza del cache candidate, qui non può essere fatto uno sha della chiave in quanto la chiave stessa è il fulcro dell'analisi sulle performance. Capire come fare o semplicemente avvisare l'utente nel README.
+- [x] Modelli.
+- [x] Defaults.
+- [x] Test.
+- [x] Documentazione.

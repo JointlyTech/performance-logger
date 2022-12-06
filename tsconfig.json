@@ -8,7 +8,8 @@
     "removeComments": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "outDir": "dist"
+    "outDir": "dist",
+    "experimentalDecorators": true
   },
   "exclude": ["node_modules", "**/*.test.js", "**/*.test.ts", "dist"]
 }
