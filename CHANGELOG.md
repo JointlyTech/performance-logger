@@ -1,3 +1,9 @@
+### 0.1.0 (2022-12-12)
+
+##### New Features
+
+*  added args and result to logger + internal refactor ([ac02c5fd](https://github.com/JointlyTech/performance-logger/commit/ac02c5fdadee10c2d807692554433f9403791f00))
+
 #### 0.0.2 (2022-12-12)
 
 ##### Chores
