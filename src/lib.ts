@@ -1,19 +1,18 @@
-// Create a function which acts as a decorator and analyzes the function it decorates.
-
 import { performance } from 'perf_hooks';
 import { LogPerformanceDefault } from './default';
-import { LogPerformanceOptions } from './models';
+import { LogPerformanceOptions, LogPerformanceOptionsLog } from './models';
 
 export function LogPerformance(_options: Partial<LogPerformanceOptions> = {}) {
+  const options: LogPerformanceOptions = {
+    ...LogPerformanceDefault,
+    ..._options
+  };
+
   return function (
     target: any,
     propertyKey: string,
     descriptor: PropertyDescriptor
   ) {
-    const options: LogPerformanceOptions = {
-      ...LogPerformanceDefault,
-      ..._options
-    };
     // If name is null, set it to the name of the class and the function
     const name = options.name ?? getName({ target, propertyKey });
     const originalMethod = descriptor.value;
@@ -24,16 +23,23 @@ export function LogPerformance(_options: Partial<LogPerformanceOptions> = {}) {
       const start = performance.now();
       const execution = originalMethod.apply(this, args);
       if (originalMethod.then) {
-        execution.then(() =>
-          handleElaborate({ start, name, log: options.log })
+        execution.then((result) =>
+          handleElaborate({ start, name, log: options.log, args, result })
         );
       } else {
-        handleElaborate({ start, name, log: options.log });
+        handleElaborate({
+          start,
+          name,
+          log: options.log,
+          args,
+          result: execution
+        });
       }
       return execution;
     };
   };
 }
+
 function getName({
   target,
   propertyKey
@@ -53,20 +59,25 @@ function hasPassedValidation({
 }) {
   return (
     (typeof validation === 'boolean' && validation) ||
-    (typeof validation === 'function' && validation(...args))
+    (typeof validation === 'function' && validation(...args)) ||
+    false
   );
 }
 
 function handleElaborate({
   start,
   name,
-  log
+  log,
+  args,
+  result
 }: {
   start: number;
   name: string;
-  log: ({ name, time }: { name: string; time: number }) => void;
+  log: LogPerformanceOptionsLog;
+  args: any[];
+  result: any;
 }) {
   const end = performance.now();
-  const time = end - start;
-  log({ name, time });
+  const executionTime = end - start;
+  log({ name, executionTime, args, result });
 }
