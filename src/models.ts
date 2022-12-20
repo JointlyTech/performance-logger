@@ -11,7 +11,7 @@ export type LogPerformanceOptionsLog = ({
 }) => void;
 
 export interface LogPerformanceOptions {
-  name: string | null;
+  name?: string;
   validation: boolean | Function;
   log: LogPerformanceOptionsLog;
 }
