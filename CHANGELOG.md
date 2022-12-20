@@ -1,3 +1,17 @@
+### 0.2.0 (2022-12-20)
+
+##### Chores
+
+*  better types ([16945b9c](https://github.com/JointlyTech/performance-logger/commit/16945b9cd2f20d86cf01038188fe89d45c5a5f09))
+
+##### Other Changes
+
+*  improved coverage ([be2a0f0c](https://github.com/JointlyTech/performance-logger/commit/be2a0f0caef32540f613de4f7eefcea389f62858))
+
+##### Refactors
+
+*  used hook-fn instead of reimplementing it ([1ebea1ef](https://github.com/JointlyTech/performance-logger/commit/1ebea1ef283c7f4655ef344a5f57c46b2946bd0b))
+
 ### 0.1.0 (2022-12-12)
 
 ##### New Features
