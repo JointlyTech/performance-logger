@@ -90,7 +90,71 @@ it('should not pass if validation is false', () => {
   expect(logMap.get('testFn')).toBe(undefined);
 });
 
-it('should throw if name is not provided to HOF', () => {
+it('should not pass if validation is true', () => {
+  const logMap = new Map();
+  const mockMethod = () => {
+    return true;
+  };
+
+  const loggableMockMethod = logPerformance({
+    name: 'testFn',
+    validation: true,
+    log: () => {
+      logMap.set('testFn', (logMap.get('testFn') ?? 0) + 1);
+    }
+  })(mockMethod);
+
+  loggableMockMethod();
+  loggableMockMethod();
+
+  expect(logMap.get('testFn')).toBe(2);
+});
+
+it('should not pass if validation is a function that returns false', () => {
+  const logMap = new Map();
+  const mockMethod = () => {
+    return true;
+  };
+
+  const loggableMockMethod = logPerformance({
+    name: 'testFn',
+    validation: () => {
+      return false;
+    },
+    log: () => {
+      logMap.set('testFn', (logMap.get('testFn') ?? 0) + 1);
+    }
+  })(mockMethod);
+
+  loggableMockMethod();
+  loggableMockMethod();
+
+  expect(logMap.get('testFn')).toBe(undefined);
+});
+
+it('should not pass if validation is a function that returns true', () => {
+  const logMap = new Map();
+  const mockMethod = () => {
+    return true;
+  };
+
+  const loggableMockMethod = logPerformance({
+    name: 'testFn',
+    validation: () => {
+      return true;
+    },
+    log: () => {
+      logMap.set('testFn', (logMap.get('testFn') ?? 0) + 1);
+    }
+  })(mockMethod);
+
+  loggableMockMethod();
+  loggableMockMethod();
+
+  expect(logMap.get('testFn')).toBe(2);
+});
+
+it('should throw if name is not provided to HOP', () => {
   const mockMethod = () => {
     return true;
   };

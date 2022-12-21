@@ -3,6 +3,7 @@ import { performance } from 'perf_hooks';
 import { LogPerformanceDefault } from './default';
 import { LogPerformanceOptions } from './models';
 
+/* istanbul ignore next */
 export function LogPerformance(_options: Partial<LogPerformanceOptions> = {}) {
   const options: LogPerformanceOptions = {
     ...LogPerformanceDefault,
@@ -47,6 +48,7 @@ function hasPassedValidation({
   );
 }
 
+/* istanbul ignore next */
 export function logPerformance(_options: Partial<LogPerformanceOptions> = {}) {
   const options: LogPerformanceOptions = {
     ...LogPerformanceDefault,
