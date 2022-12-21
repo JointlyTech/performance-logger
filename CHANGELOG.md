@@ -1,3 +1,14 @@
+#### 0.2.1 (2022-12-21)
+
+##### Chores
+
+*  added npm shortcut for coverage ([d8655a7c](https://github.com/JointlyTech/performance-logger/commit/d8655a7c50d74177b09fb8407b058e0d1ee730dd))
+*  added exports in index ([3eb1bab4](https://github.com/JointlyTech/performance-logger/commit/3eb1bab4b603732151cdb8b3a0a57aa11ef56310))
+
+##### Tests
+
+*  added test to cover 100% of code ([6505895e](https://github.com/JointlyTech/performance-logger/commit/6505895efc7d9c1624fb2f1431a05476047f47d0))
+
 ### 0.2.0 (2022-12-20)
 
 ##### Chores
