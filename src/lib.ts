@@ -1,6 +1,5 @@
-import { hook } from 'hook-fn';
-import { performance } from 'perf_hooks';
 import { LogPerformanceDefault } from './default';
+import { getName, performanceHook } from './internal';
 import { LogPerformanceOptions } from './models';
 
 /* istanbul ignore next */
@@ -9,6 +8,9 @@ export function LogPerformance(_options: Partial<LogPerformanceOptions> = {}) {
     ...LogPerformanceDefault,
     ..._options
   };
+  if(typeof options.log !== 'function') {
+    throw new Error('options.log must be a function');
+  }
 
   return function (
     target: any,
@@ -24,29 +26,7 @@ export function LogPerformance(_options: Partial<LogPerformanceOptions> = {}) {
   };
 }
 
-function getName({
-  target,
-  propertyKey
-}: {
-  target: any;
-  propertyKey: string;
-}): string {
-  return `${target.constructor.name}.${propertyKey}`;
-}
 
-function hasPassedValidation({
-  validation,
-  args
-}: {
-  validation: boolean | Function;
-  args: any[];
-}) {
-  return (
-    (typeof validation === 'boolean' && validation) ||
-    (typeof validation === 'function' && validation(...args)) ||
-    false
-  );
-}
 
 /* istanbul ignore next */
 export function logPerformance(_options: Partial<LogPerformanceOptions> = {}) {
@@ -54,6 +34,10 @@ export function logPerformance(_options: Partial<LogPerformanceOptions> = {}) {
     ...LogPerformanceDefault,
     ..._options
   };
+
+  if(typeof options.log !== 'function') {
+    throw new Error('options.log must be a function');
+  }
   if (!options.name) {
     throw new Error(
       'Name is required for logPerformance higher-order function'
@@ -61,23 +45,4 @@ export function logPerformance(_options: Partial<LogPerformanceOptions> = {}) {
   }
 
   return performanceHook(options);
-}
-
-function performanceHook(options: LogPerformanceOptions) {
-  return hook({
-    before: ({ context }) => {
-      context.start = performance.now();
-    },
-    after: async ({ context, result, args }) => {
-      if (result.then) result = await result;
-
-      if (hasPassedValidation({ validation: options.validation, args }))
-        options.log({
-          name: options.name as string,
-          executionTime: performance.now() - context.start,
-          args,
-          result
-        });
-    }
-  });
 }
