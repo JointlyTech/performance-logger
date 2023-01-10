@@ -1,3 +1,9 @@
+#### 0.2.2 (2023-01-10)
+
+##### Chores
+
+*  internal refactor + added options.log type check ([b24436f8](https://github.com/JointlyTech/performance-logger/commit/b24436f8942e4372f9749a966af8b335de720e24))
+
 #### 0.2.1 (2022-12-21)
 
 ##### Chores
