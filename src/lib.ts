@@ -8,7 +8,7 @@ export function LogPerformance(_options: Partial<LogPerformanceOptions> = {}) {
     ...LogPerformanceDefault,
     ..._options
   };
-  if(typeof options.log !== 'function') {
+  if (typeof options.log !== 'function') {
     throw new Error('options.log must be a function');
   }
 
@@ -26,8 +26,6 @@ export function LogPerformance(_options: Partial<LogPerformanceOptions> = {}) {
   };
 }
 
-
-
 /* istanbul ignore next */
 export function logPerformance(_options: Partial<LogPerformanceOptions> = {}) {
   const options: LogPerformanceOptions = {
@@ -35,7 +33,7 @@ export function logPerformance(_options: Partial<LogPerformanceOptions> = {}) {
     ..._options
   };
 
-  if(typeof options.log !== 'function') {
+  if (typeof options.log !== 'function') {
     throw new Error('options.log must be a function');
   }
   if (!options.name) {

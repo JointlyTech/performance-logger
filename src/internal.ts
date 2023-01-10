@@ -1,6 +1,6 @@
-import { hook } from "hook-fn";
-import { LogPerformanceOptions } from "./models";
-import { performance } from "perf_hooks";
+import { hook } from 'hook-fn';
+import { LogPerformanceOptions } from './models';
+import { performance } from 'perf_hooks';
 
 export function getName({
   target,
