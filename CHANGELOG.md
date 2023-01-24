@@ -1,3 +1,13 @@
+#### 0.2.3 (2023-01-24)
+
+##### Chores
+
+*  linting ([48b36097](https://github.com/JointlyTech/performance-logger/commit/48b36097124e32381a59b017644b4f96e7d092fd))
+
+##### Documentation Changes
+
+*  improved documentation adding examples, execution time measure unit and better description ([1dfa2b07](https://github.com/JointlyTech/performance-logger/commit/1dfa2b071d9d90e5334580be9ed9dbeaa8b931c0))
+
 #### 0.2.2 (2023-01-10)
 
 ##### Chores
