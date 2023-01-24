@@ -1,3 +1,9 @@
+#### 0.2.4 (2023-01-24)
+
+##### Chores
+
+* **deps:**  bump json5 from 2.2.1 to 2.2.3 ([0cc73fe9](https://github.com/JointlyTech/performance-logger/commit/0cc73fe9c8202d97188e9a8bedbcf85526a562ce))
+
 #### 0.2.3 (2023-01-24)
 
 ##### Chores
